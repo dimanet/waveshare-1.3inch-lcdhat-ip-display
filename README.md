@@ -12,6 +12,15 @@ The display is rotated 90 degrees.
 
 ## Install
 
+### One-liner
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/dimanet/waveshare-1.3inch-lcdhat-ip-display/main/install-waveshare-1.3-lcd-ip-display.sh | sudo bash
+sudo reboot
+```
+
+### Download then run
+
 ```bash
 wget -O install-waveshare-1.3-lcd-ip-display.sh https://raw.githubusercontent.com/dimanet/waveshare-1.3inch-lcdhat-ip-display/main/install-waveshare-1.3-lcd-ip-display.sh
 sudo bash install-waveshare-1.3-lcd-ip-display.sh
