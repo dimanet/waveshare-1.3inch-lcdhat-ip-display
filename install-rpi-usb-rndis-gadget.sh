@@ -6,7 +6,6 @@ if [[ ${EUID:-$(id -u)} -ne 0 ]]; then
   exit 1
 fi
 
-USB_IP_CIDR=10.99.99.1/24
 SERIAL=${SERIAL:-krjakrja0001}
 MANUFACTURER=${MANUFACTURER:-krjakrja bot}
 PRODUCT=${PRODUCT:-Pi Zero 2 W USB RNDIS}
@@ -73,7 +72,6 @@ cat > /usr/local/sbin/usb-rndis-gadget <<'SH'
 #!/usr/bin/env bash
 set -euo pipefail
 
-USB_IP_CIDR=10.99.99.1/24
 SERIAL=${SERIAL:-krjakrja0001}
 MANUFACTURER=${MANUFACTURER:-krjakrja bot}
 PRODUCT=${PRODUCT:-Pi Zero 2 W USB RNDIS}
@@ -119,7 +117,7 @@ ln -sfn configs/c.1 os_desc/c.1
 echo "$UDC" > UDC
 
 ip link set usb0 up
-ip address replace "$USB_IP_CIDR" dev usb0
+ip address replace 10.99.99.1/24 dev usb0
 SH
 chmod 755 /usr/local/sbin/usb-rndis-gadget
 
@@ -160,7 +158,6 @@ ConditionPathExists=/sys/kernel/config
 [Service]
 Type=oneshot
 RemainAfterExit=yes
-Environment="USB_IP_CIDR=10.99.99.1/24"
 Environment="SERIAL=$SERIAL"
 Environment="MANUFACTURER=$MANUFACTURER"
 Environment="PRODUCT=$PRODUCT"
@@ -175,5 +172,5 @@ systemctl daemon-reload
 systemctl enable usb-rndis-gadget.service
 
 log "Done. Reboot required."
-log "After reboot, plug the Pi into the data/OTG USB port and it will expose usb0 as $USB_IP_CIDR with no gateway or DNS."
+log "After reboot, plug the Pi into the data/OTG USB port and it will expose usb0 as 10.99.99.1/24 with no gateway or DNS."
 log "Reboot now with: reboot"
