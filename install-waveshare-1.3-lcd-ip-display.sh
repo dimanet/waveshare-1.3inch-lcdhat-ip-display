@@ -175,7 +175,7 @@ def render(disp):
     temp_text = f"CPU {temp_c:.1f} C" if temp_c is not None else "CPU temp n/a"
     draw.line((10, 184, 230, 184), fill=(40, 40, 40), width=1)
     draw.text((10, 192), temp_text, font=SMALL_FONT, fill=(120, 255, 120))
-    draw.text((10, 216), time.strftime("%H:%M:%S"), font=SMALL_FONT, fill=(140, 140, 140))
+    draw.text((10, 216), time.strftime("%H:%M"), font=SMALL_FONT, fill=(140, 140, 140))
 
     disp.ShowImage(image.rotate(ROTATION, expand=False))
 
