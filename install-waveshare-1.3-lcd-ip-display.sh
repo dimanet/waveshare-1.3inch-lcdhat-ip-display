@@ -112,7 +112,7 @@ def pick_font(size):
     return ImageFont.load_default()
 
 
-TITLE_FONT = pick_font(38)
+TITLE_FONT = pick_font(37)
 TEXT_FONT = pick_font(28)
 SMALL_FONT = pick_font(23)
 
@@ -157,25 +157,25 @@ def render(disp):
     draw = ImageDraw.Draw(image)
 
     draw.text((10, 8), hostname, font=TITLE_FONT, fill=(0, 220, 255))
-    draw.line((10, 52, 230, 52), fill=(40, 40, 40), width=1)
+    draw.line((10, 50, 230, 50), fill=(40, 40, 40), width=1)
 
-    y = 72
+    y = 60
     if ipv4s:
-        for iface, addr in ipv4s[:5]:
+        for iface, addr in ipv4s[:4]:
             draw.text((10, y), iface.upper(), font=SMALL_FONT, fill=(255, 200, 0))
-            y += 24
+            y += 22
             draw.text((10, y), addr, font=TEXT_FONT, fill=(255, 255, 255))
-            y += 46
-            if y > 150:
+            y += 34
+            if y > 156:
                 break
     else:
         draw.text((10, y), "No IPv4 address", font=TEXT_FONT, fill=(255, 120, 120))
-        y += 46
+        y += 34
 
     temp_text = f"CPU {temp_c:.1f} C" if temp_c is not None else "CPU temp n/a"
-    draw.line((10, 176, 230, 176), fill=(40, 40, 40), width=1)
-    draw.text((10, 184), temp_text, font=SMALL_FONT, fill=(120, 255, 120))
-    draw.text((10, 212), time.strftime("%H:%M:%S"), font=SMALL_FONT, fill=(140, 140, 140))
+    draw.line((10, 184, 230, 184), fill=(40, 40, 40), width=1)
+    draw.text((10, 192), temp_text, font=SMALL_FONT, fill=(120, 255, 120))
+    draw.text((10, 216), time.strftime("%H:%M:%S"), font=SMALL_FONT, fill=(140, 140, 140))
 
     disp.ShowImage(image.rotate(ROTATION, expand=False))
 
