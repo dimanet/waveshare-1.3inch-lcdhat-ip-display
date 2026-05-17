@@ -6,7 +6,7 @@ if [[ ${EUID:-$(id -u)} -ne 0 ]]; then
   exit 1
 fi
 
-USB_IP_CIDR=${USB_IP_CIDR:-10.99.99.1/24}
+USB_IP_CIDR=10.99.99.1/24
 SERIAL=${SERIAL:-krjakrja0001}
 MANUFACTURER=${MANUFACTURER:-krjakrja bot}
 PRODUCT=${PRODUCT:-Pi Zero 2 W USB RNDIS}
@@ -73,7 +73,7 @@ cat > /usr/local/sbin/usb-rndis-gadget <<'SH'
 #!/usr/bin/env bash
 set -euo pipefail
 
-USB_IP_CIDR=${USB_IP_CIDR:-10.99.99.1/24}
+USB_IP_CIDR=10.99.99.1/24
 SERIAL=${SERIAL:-krjakrja0001}
 MANUFACTURER=${MANUFACTURER:-krjakrja bot}
 PRODUCT=${PRODUCT:-Pi Zero 2 W USB RNDIS}
@@ -160,7 +160,7 @@ ConditionPathExists=/sys/kernel/config
 [Service]
 Type=oneshot
 RemainAfterExit=yes
-Environment="USB_IP_CIDR=$USB_IP_CIDR"
+Environment="USB_IP_CIDR=10.99.99.1/24"
 Environment="SERIAL=$SERIAL"
 Environment="MANUFACTURER=$MANUFACTURER"
 Environment="PRODUCT=$PRODUCT"

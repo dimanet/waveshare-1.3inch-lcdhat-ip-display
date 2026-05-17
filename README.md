@@ -16,7 +16,7 @@ This repo also includes a one-shot Raspberry Pi USB RNDIS gadget installer.
 
 It configures a Pi Zero 2 W style USB gadget that exposes:
 - `usb0`
-- static IP `10.99.99.1/24`
+- fixed IP `10.99.99.1/24`
 - no gateway
 - no DNS
 - Windows-friendly RNDIS descriptors
